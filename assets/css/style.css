@@ -226,10 +226,9 @@ main {
 }
 
 .hero-logo {
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: min(520px, 100%);
-  max-height: clamp(126px, 23vh, 380px);
+  max-width: 420px;
 }
 
 .hero-photo {
@@ -242,8 +241,9 @@ main {
 }
 
 .signup-panel {
-  max-width: 780px;
+  max-width: 560px;
   width: 100%;
+  padding: clamp(10px, 1.4vh, 24px) clamp(14px, 2.2vw, 26px);
 }
 
 .signup-panel .field-row {
@@ -258,14 +258,15 @@ main {
 }
 
 .signup-panel h2 {
-  font-size: clamp(1.5rem, 1rem + 2vh, 2.4rem);
-  margin-bottom: clamp(8px, 1.4vh, 16px);
+  font-size: clamp(1.15rem, 0.8rem + 1.4vh, 1.8rem);
+  margin-bottom: clamp(6px, 1vh, 12px);
 }
 
 .signup-panel .lede {
   color: var(--color-text);
   font-weight: 600;
-  margin-bottom: clamp(12px, 2vh, 20px);
+  font-size: clamp(0.85rem, 0.7rem + 0.5vh, 1rem);
+  margin-bottom: clamp(10px, 1.6vh, 16px);
 }
 
 .field {
