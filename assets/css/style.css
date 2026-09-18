@@ -221,7 +221,7 @@ main {
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: clamp(20px, 3vh, 32px);
-  max-width: 1040px;
+  max-width: clamp(760px, 76vw, 1040px);
   margin: 0 auto;
 }
 
@@ -235,7 +235,7 @@ main {
 .hero-logo {
   width: 100%;
   height: auto;
-  max-width: 420px;
+  max-width: clamp(240px, 30vw, 420px);
 }
 
 .hero-photo {
@@ -243,12 +243,12 @@ main {
   align-self: center;
   width: auto;
   height: auto;
-  max-width: min(520px, 100%);
+  max-width: clamp(260px, 38vw, 520px);
   max-height: clamp(260px, 70vh, 720px);
 }
 
 .signup-panel {
-  max-width: 560px;
+  max-width: clamp(320px, 44vw, 560px);
   width: 100%;
   padding: clamp(10px, 1.4vh, 24px) clamp(14px, 2.2vw, 26px);
 }
@@ -481,20 +481,14 @@ main {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 48px;
-  align-items: stretch;
-}
-
-.podcast-panel {
-  display: flex;
-  flex-direction: column;
+  align-items: start;
 }
 
 .podcast-photo-frame {
   position: relative;
-  align-self: center;
   width: 100%;
-  max-width: clamp(340px, 46vw, 620px);
-  aspect-ratio: 1243 / 1600;
+  max-width: clamp(260px, 34vw, 460px);
+  aspect-ratio: 4 / 5;
   margin: 0 auto;
 }
 
@@ -503,7 +497,13 @@ main {
   inset: 0;
   width: 100%;
   height: 100%;
+  border-radius: var(--radius);
   object-fit: cover;
+}
+
+.podcast-panel {
+  margin-top: clamp(20px, 6vw, 60px);
+  padding: clamp(64px, 10vh, 130px) clamp(56px, 9.5vw, 116px);
 }
 
 .podcast-panel h2 {
@@ -518,7 +518,7 @@ main {
 
 .spotify-embed iframe {
   width: 100%;
-  height: 232px;
+  height: clamp(180px, 20vw, 232px);
   border: none;
 }
 
@@ -616,13 +616,13 @@ main {
 
   .tour-photo,
   .bio-photo {
-    max-width: 420px;
-    max-height: 320px;
+    max-width: clamp(260px, 60vw, 420px);
+    max-height: clamp(220px, 44vw, 320px);
     margin: 0 auto;
   }
 
   .podcast-photo-frame {
-    max-width: 280px;
+    max-width: clamp(220px, 56vw, 280px);
     margin: 0 auto;
   }
 
