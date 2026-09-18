@@ -1,0 +1,661 @@
+/* ============================================
+   Simon Mann — Comedian Website
+   ============================================ */
+
+:root {
+  --color-header: #4d3a36;
+  --color-body: #6a463e;
+  --color-panel: rgba(0, 0, 0, 0.16);
+  --color-panel-solid: #55372f;
+  --color-accent: #27c199;
+  --color-accent-dark: #1e9c7c;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.75);
+  --font-heading: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --max-width: 1400px;
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-body);
+  background-image: url("../img/background.png");
+  background-repeat: repeat;
+  background-size: 1920px auto;
+  background-attachment: fixed;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  margin: 0 0 16px;
+  line-height: 1.05;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 1.1rem + 3vw, 2.6rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 0.9rem + 1.2vw, 1.5rem);
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+/* ---------- Header / Nav ---------- */
+
+.site-header {
+  background-color: var(--color-header);
+  padding: 22px clamp(20px, 5vw, 64px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(10px, 2.5vw, 24px);
+}
+
+.nav-spacer {
+  width: 1px;
+}
+
+.nav-wrap nav {
+  justify-self: center;
+}
+
+.nav-wrap .nav-social {
+  justify-self: end;
+  margin-right: clamp(24px, 7vw, 100px);
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(14px, 2.4vw, 40px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links a {
+  display: inline-block;
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: clamp(0.78rem, 0.55rem + 0.5vw, 1rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.nav-social {
+  display: flex;
+  gap: clamp(8px, 1.2vw, 14px);
+}
+
+.nav-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(32px, 2.4vw + 20px, 40px);
+  height: clamp(32px, 2.4vw + 20px, 40px);
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+  color: var(--color-text);
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.nav-social a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.nav-social svg {
+  width: 55%;
+  height: 55%;
+}
+
+@media (max-width: 560px) {
+  .nav-wrap {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .nav-spacer {
+    display: none;
+  }
+
+  .nav-wrap .nav-social {
+    justify-self: center;
+    margin-right: 0;
+  }
+}
+
+/* ---------- Layout helpers ---------- */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.page-section {
+  padding-block: clamp(12px, 3vh, 64px);
+  min-height: calc(100svh - 84px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: 84px;
+}
+
+.page-section + .page-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.panel {
+  background-color: var(--color-panel);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  padding: clamp(14px, 2vh, 36px) clamp(20px, 3vw, 36px);
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+/* ---------- Startseite ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: clamp(20px, 3vh, 32px);
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(16px, 2.4vh, 24px);
+}
+
+.hero-logo {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+}
+
+.hero-photo {
+  justify-self: center;
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-width: min(520px, 100%);
+  max-height: clamp(260px, 70vh, 720px);
+}
+
+.signup-panel {
+  max-width: 560px;
+  width: 100%;
+  padding: clamp(10px, 1.4vh, 24px) clamp(14px, 2.2vw, 26px);
+}
+
+.signup-panel .field-row {
+  display: flex;
+  gap: clamp(12px, 1.6vw, 20px);
+  flex-wrap: wrap;
+}
+
+.signup-panel .field-row .field {
+  flex: 1 1 150px;
+  margin-bottom: clamp(8px, 1.3vh, 18px);
+}
+
+.signup-panel h2 {
+  font-size: clamp(1.15rem, 0.8rem + 1.4vh, 1.8rem);
+  margin-bottom: clamp(6px, 1vh, 12px);
+}
+
+.signup-panel .lede {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: clamp(0.85rem, 0.7rem + 0.5vh, 1rem);
+  margin-bottom: clamp(10px, 1.6vh, 16px);
+}
+
+.field {
+  margin-bottom: clamp(8px, 1.3vh, 18px);
+}
+
+.field label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  padding: clamp(11px, 0.6vw + 9px, 14px) clamp(12px, 0.8vw + 9px, 16px);
+  border: none;
+  border-radius: var(--radius);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: clamp(0.9rem, 0.3vw + 0.8rem, 1rem);
+}
+
+.field input.field--narrow {
+  width: 75%;
+}
+
+.field input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.field input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: clamp(11px, 0.5vw + 9px, 14px) clamp(20px, 1.4vw + 14px, 28px);
+  background-color: var(--color-accent);
+  color: var(--color-header);
+  font-weight: 800;
+  font-size: clamp(0.82rem, 0.2vw + 0.78rem, 0.95rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-accent-dark);
+  color: var(--color-text);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-accent);
+  color: var(--color-header);
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* ---------- Tour ---------- */
+
+.tour-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.tour-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-list--framed {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tour-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(12px, 2vw, 24px);
+  align-items: center;
+  padding: clamp(16px, 2.6vw, 30px) clamp(4px, 1vw, 10px);
+}
+
+.tour-date {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1rem, 0.6rem + 1vw, 1.35rem);
+}
+
+.tour-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+}
+
+.tour-list--framed .tour-row:not(:last-of-type) .tour-details::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 220%);
+  width: clamp(200px, 60vw, 1200px);
+  height: clamp(12px, 1.6vw, 16px);
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-mask-image: url("../img/divider-line.svg");
+  mask-image: url("../img/divider-line.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.tour-city {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1rem, 0.6rem + 1vw, 1.35rem);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.tour-city:hover {
+  color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.tour-status {
+  display: inline-block;
+  font-weight: 700;
+  font-size: clamp(0.72rem, 0.3vw + 0.62rem, 0.85rem);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.tour-status:hover {
+  color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.tour-row .tour-tickets {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1rem, 0.6rem + 1vw, 1.35rem);
+}
+
+.tour-row.tour-row--next .tour-tickets,
+.tour-row .tour-tickets:hover {
+  color: var(--color-accent);
+}
+
+.tour-photo {
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  max-height: clamp(280px, 42vw, 560px);
+  object-fit: cover;
+}
+
+.tour-empty {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(0.85rem, 0.3vw + 0.75rem, 1.05rem);
+  margin-top: clamp(10px, 1.6vw, 16px);
+}
+
+/* ---------- Podcast ---------- */
+
+.podcast-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.podcast-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.podcast-photo-frame {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  max-width: clamp(340px, 46vw, 620px);
+  aspect-ratio: 1243 / 1600;
+  margin: 0 auto;
+}
+
+.podcast-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.podcast-panel h2 {
+  font-size: clamp(1.6rem, 1rem + 2.2vw, 2.4rem);
+}
+
+.spotify-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.spotify-embed iframe {
+  width: 100%;
+  height: 232px;
+  border: none;
+}
+
+.podcast-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Bio + Kontakt ---------- */
+
+.bio-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.bio-photo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bio-photo {
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  max-height: clamp(305px, 43.5vw, 590px);
+  object-fit: cover;
+  flex: 1;
+}
+
+.bio-photo-col .btn {
+  align-self: stretch;
+  justify-content: center;
+}
+
+.bio-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bio-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.kontakt-panel .lede {
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.kontakt-email {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 1vw + 1.1rem, 1.8rem);
+  color: var(--color-accent);
+}
+
+.kontakt-email:hover {
+  color: var(--color-accent-dark);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 32px clamp(20px, 5vw, 64px) 48px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo {
+    justify-self: center;
+    order: -1;
+    max-width: 280px;
+  }
+
+  .tour-layout,
+  .podcast-layout,
+  .bio-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-photo,
+  .bio-photo {
+    max-width: 420px;
+    max-height: 320px;
+    margin: 0 auto;
+  }
+
+  .podcast-photo-frame {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .tour-photo,
+  .podcast-photo-frame,
+  .bio-photo-col {
+    order: -1;
+  }
+
+  .bio-photo-col {
+    align-items: center;
+  }
+
+  .tour-row {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 4px;
+    padding: 10px 4px;
+  }
+
+  .tour-status {
+    justify-self: start;
+  }
+
+  .kontakt-row .field input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tour-layout,
+  .podcast-layout,
+  .bio-layout {
+    gap: clamp(24px, 3vw, 48px);
+  }
+}

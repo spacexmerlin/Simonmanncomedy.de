@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simon Mann — Stand-Up Comedian</title>
+<meta name="description" content="Offizielle Website von Simon Mann: Tourtermine, der Podcast „Dicke Luft“, Bio und E-Mail-Liste für Updates zur ersten Solotour." />
+<link rel="icon" href="assets/img/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css?v=32" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <div class="nav-spacer" aria-hidden="true"></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#email-liste" data-nav="email-liste">E-Mail Liste</a></li>
+        <li><a href="#tour" data-nav="tour">Tour</a></li>
+        <li><a href="#podcast" data-nav="podcast">Podcast</a></li>
+        <li><a href="#bio" data-nav="bio">Bio &amp; Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/simonmanncomedy/" target="_blank" rel="noopener" aria-label="Simon Mann auf Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+      <a href="https://www.tiktok.com/@simonmanncomedy" target="_blank" rel="noopener" aria-label="Simon Mann auf TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3v10.5a3.5 3.5 0 1 1-3.5-3.5c.35 0 .69.04 1 .12" />
+          <path d="M15 3a5 5 0 0 0 5 5" />
+        </svg>
+      </a>
+      <a href="https://www.youtube.com/@nichtsimonmann" target="_blank" rel="noopener" aria-label="Simon Mann auf YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="4" />
+          <path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== Startseite / E-Mail Liste ===== -->
+  <section class="page-section" id="email-liste">
+    <div class="hero">
+      <div class="hero-copy">
+        <img class="hero-logo" src="assets/img/logo.svg" alt="Simon Mann" />
+
+        <div class="panel signup-panel">
+          <h2>E-Mail Liste</h2>
+          <p class="lede">Noch spiele ich keine Solotour.<br />Aber wenn es soweit ist, kann ich dir eine E-Mail senden.</p>
+          <form data-no-backend>
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="stadt">Stadt:</label>
+                <input type="text" id="stadt" name="stadt" autocomplete="address-level2" />
+              </div>
+              <div class="field">
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn">Anmelden</button>
+              <p class="form-note" hidden style="margin:0; color: var(--color-accent); font-weight: 700;">Danke! Du bist auf der Liste.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <img class="hero-photo" src="assets/img/hero-photo.png" alt="Simon Mann mit Mikrofon auf der Bühne" />
+    </div>
+  </section>
+
+  <!-- ===== Tour ===== -->
+  <section class="page-section" id="tour">
+    <div class="tour-layout">
+      <div class="tour-list tour-list--framed">
+        <div class="tour-row">
+          <span class="tour-date">08.10.26.</span>
+          <span class="tour-details"><span class="tour-city">Hamburg</span></span>
+          <span class="tour-status">Tickets</span>
+        </div>
+        <div class="tour-row">
+          <span class="tour-date">13.10.26.</span>
+          <span class="tour-details"><span class="tour-city">Frankfurt am Main</span></span>
+          <span class="tour-status">Tickets</span>
+        </div>
+        <div class="tour-row">
+          <span class="tour-date">20.10.26.</span>
+          <span class="tour-details"><span class="tour-city">Düsseldorf</span></span>
+          <span class="tour-status">Tickets</span>
+        </div>
+        <div class="tour-row">
+          <span class="tour-date">25.10.26.</span>
+          <span class="tour-details"><span class="tour-city">München</span></span>
+          <span class="tour-status">Tickets</span>
+        </div>
+        <div class="tour-row">
+          <span class="tour-date">29.10.26.</span>
+          <span class="tour-details"><span class="tour-city">Leipzig</span></span>
+          <span class="tour-status">Tickets</span>
+        </div>
+        <div class="tour-row">
+          <span class="tour-date">03.11.26.</span>
+          <span class="tour-details"><span class="tour-city">Berlin</span></span>
+          <span class="tour-status">Tickets</span>
+        </div>
+
+        <p class="tour-empty">Tickets sind noch nicht online — trag dich in die <a href="#email-liste">E-Mail Liste</a> ein und verpass keinen Verkaufsstart.</p>
+      </div>
+
+      <img class="tour-photo" src="assets/img/tour-photo.png" alt="Simon Mann live auf der Bühne im Lucky Punch Comedy Club" />
+    </div>
+  </section>
+
+  <!-- ===== Podcast ===== -->
+  <section class="page-section" id="podcast">
+    <div class="podcast-layout">
+      <div class="podcast-photo-frame">
+        <img class="podcast-photo" src="assets/img/podcast-photo-framed.png" alt="Simon Mann, Philip Wefel und Yannick de la Pêche — die Stimmen von Dicke Luft, im Bilderrahmen" />
+      </div>
+
+      <div class="panel podcast-panel">
+        <h2>aktuelle Folge:</h2>
+
+        <!--
+          Sobald die echte Spotify-Episode bekannt ist, hier den offiziellen
+          Embed einsetzen, z.B.:
+          <iframe src="https://open.spotify.com/embed/episode/EPISODE_ID"
+                  width="100%" height="232" frameborder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"></iframe>
+        -->
+        <div class="spotify-embed" style="background:#111; padding:14px; display:flex; flex-direction:column; gap:10px; margin-top:auto;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <div style="width:48px; height:48px; border-radius:6px; background:linear-gradient(135deg,#2bbf95,#1a8f6d); flex-shrink:0;"></div>
+            <div>
+              <p style="margin:0; font-weight:700; color:#fff; font-size:0.85rem;">#89 – Unterhosen im Garten</p>
+              <p style="margin:0; color:rgba(255,255,255,0.6); font-size:0.78rem;">3. Sep · Dicke Luft · 1:02:11</p>
+            </div>
+          </div>
+          <a class="btn" href="https://open.spotify.com/show/2RLZpySITKz1FGw13agaj9" target="_blank" rel="noopener" style="padding:8px 16px; font-size:0.82rem;">Auf Spotify hören</a>
+        </div>
+
+        <div class="podcast-links">
+          <a class="btn btn--outline" href="https://open.spotify.com/show/2RLZpySITKz1FGw13agaj9" target="_blank" rel="noopener">Alle Folgen auf Spotify</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Bio + Kontakt ===== -->
+  <section class="page-section" id="bio">
+    <div class="bio-layout">
+      <div class="bio-stack">
+        <div class="panel bio-panel">
+          <h1>Bio</h1>
+          <p>Der gebürtige Augsburger Simon Mann kam 2022 in den Kellern Berlins zur Comedy. Schnell machte er sich in der deutschen Stand-Up-Szene einen Namen als Haus-Comedian im Downstairs Comedy Club sowie als Opening Act für Comedians wie Osan Yaran und Michael Mittermeier.</p>
+          <p>Simon ist bekannt für seine kurzen, präzisen Jokes. Ganz ohne versteckte Botschaft – einfach pure Comedy. Michael Mittermeier bezeichnet ihn als „Comedy-Maschine“. Er behandelt Albernes mit großer Sorgfalt und Komplexes mit verblüffender Leichtigkeit.</p>
+          <p>Gemeinsam mit Philip Wefel und Yannick de la Pêche betreibt Simon den Podcast „Dicke Luft“. Die drei Comedians bringen mit ihrer besonderen Dynamik jeden Donnerstag ihre Hörer zum Lachen. Roh, nahbar, zu ehrlich!</p>
+          <p>Simon war bereits in zwei Staffeln von Mittermeiers Lucky Punch Comedy Club und im Finale des Stuttgarter Comedy Clash 2025 zu sehen. Bis Simon seine erste Solotour ankündigt, tingelt er auf Mix-Shows durch ganz Deutschland.</p>
+        </div>
+
+        <div class="panel kontakt-panel" id="kontakt">
+          <h2>Kontakt</h2>
+          <p class="lede">Für Presse- und Booking-Anfragen einfach eine E-Mail hinterlassen.</p>
+          <a class="kontakt-email" href="mailto:simon@ogp.rocks">simon@ogp.rocks</a>
+        </div>
+      </div>
+
+      <div class="bio-photo-col">
+        <img class="bio-photo" src="assets/img/bio-photo.png" alt="Porträt von Simon Mann" />
+        <a class="btn btn--outline" href="assets/pressematerial.zip" download>Pressematerial</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  &copy; <span id="year"></span> Simon Mann
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
