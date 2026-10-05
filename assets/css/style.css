@@ -5,7 +5,7 @@
 :root {
   --color-header: #4d3a36;
   --color-body: #6a463e;
-  --color-panel: rgba(0, 0, 0, 0.16);
+  --color-panel: var(--color-header);
   --color-panel-solid: #55372f;
   --color-accent: #27c199;
   --color-accent-dark: #1e9c7c;
@@ -206,7 +206,6 @@ main {
 .panel {
   background-color: var(--color-panel);
   border-radius: var(--radius);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
   padding: clamp(14px, 2vh, 36px) clamp(20px, 3vw, 36px);
 }
 
@@ -221,8 +220,10 @@ main {
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: clamp(20px, 3vh, 32px);
+  --hero-overlap: clamp(-230px, -14vw, -90px);
   max-width: clamp(760px, 76vw, 1040px);
   margin: 0 auto;
+  transform: translateX(calc(var(--hero-overlap) * -0.36));
 }
 
 .hero-copy {
@@ -238,13 +239,22 @@ main {
   max-width: clamp(240px, 30vw, 420px);
 }
 
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
 .hero-photo {
+  position: relative;
+  z-index: 1;
+  margin-left: var(--hero-overlap);
+  transform: translateY(11%);
   justify-self: center;
   align-self: center;
   width: auto;
   height: auto;
-  max-width: clamp(260px, 38vw, 520px);
-  max-height: clamp(260px, 70vh, 720px);
+  max-width: clamp(300px, 44vw, 640px);
+  max-height: clamp(300px, 77vh, 800px);
 }
 
 .signup-panel {
@@ -359,15 +369,15 @@ main {
 /* ---------- Tour ---------- */
 
 .tour-layout {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 48px;
-  align-items: start;
+  display: flex;
+  justify-content: center;
 }
 
 .tour-list {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 760px;
 }
 
 .tour-list--framed {
@@ -376,7 +386,7 @@ main {
 
 .tour-row {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   gap: clamp(12px, 2vw, 24px);
   align-items: center;
   padding: clamp(16px, 2.6vw, 30px) clamp(4px, 1vw, 10px);
@@ -405,7 +415,7 @@ main {
   transform: translate(-50%, 220%);
   width: clamp(200px, 60vw, 1200px);
   height: clamp(12px, 1.6vw, 16px);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-header);
   -webkit-mask-image: url("../img/divider-line.svg");
   mask-image: url("../img/divider-line.svg");
   -webkit-mask-repeat: no-repeat;
@@ -421,12 +431,6 @@ main {
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: clamp(1rem, 0.6rem + 1vw, 1.35rem);
-  transition: color 0.15s ease, transform 0.15s ease;
-}
-
-.tour-city:hover {
-  color: var(--color-accent);
-  transform: scale(1.08);
 }
 
 .tour-status {
@@ -436,7 +440,8 @@ main {
   font-size: clamp(1rem, 0.6rem + 1vw, 1.35rem);
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--color-text-muted);
+  color: var(--color-text);
+  justify-self: end;
   white-space: nowrap;
   cursor: pointer;
   transition: color 0.15s ease, transform 0.15s ease;
@@ -459,23 +464,6 @@ main {
   color: var(--color-accent);
 }
 
-.tour-photo {
-  border-radius: var(--radius);
-  overflow: hidden;
-  width: 100%;
-  height: auto;
-  max-height: clamp(280px, 42vw, 560px);
-  object-fit: cover;
-}
-
-.tour-empty {
-  color: var(--color-text-muted);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: clamp(0.85rem, 0.3vw + 0.75rem, 1.05rem);
-  margin-top: clamp(10px, 1.6vw, 16px);
-}
-
 /* ---------- Podcast ---------- */
 
 .podcast-layout {
@@ -488,8 +476,8 @@ main {
 .podcast-photo-frame {
   position: relative;
   width: 100%;
-  max-width: clamp(260px, 34vw, 460px);
-  aspect-ratio: 4 / 5;
+  max-width: clamp(300px, 40vw, 540px);
+  aspect-ratio: 1243 / 1600;
   margin: 0 auto;
 }
 
@@ -498,7 +486,6 @@ main {
   inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: var(--radius);
   object-fit: cover;
 }
 
@@ -540,24 +527,36 @@ main {
 }
 
 .bio-photo-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  position: relative;
+  min-height: 320px;
 }
 
 .bio-photo {
+  position: absolute;
+  inset: 0;
   border-radius: var(--radius);
   overflow: hidden;
   width: 100%;
-  height: auto;
-  max-height: clamp(305px, 43.5vw, 590px);
+  height: 100%;
   object-fit: cover;
-  flex: 1;
 }
 
-.bio-photo-col .btn {
+.kontakt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 1.6vw, 24px);
+  flex-wrap: wrap;
+}
+
+.kontakt-panel {
+  flex: 1 1 280px;
+  max-width: 100%;
+}
+
+.kontakt-row .btn {
   align-self: stretch;
-  justify-content: center;
+  padding-block: clamp(22px, 2.4vw, 34px);
 }
 
 .bio-stack {
@@ -579,7 +578,7 @@ main {
   display: inline-block;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: clamp(1.3rem, 1vw + 1.1rem, 1.8rem);
+  font-size: clamp(0.95rem, 0.5vw + 0.85rem, 1.2rem);
   color: var(--color-accent);
 }
 
@@ -609,14 +608,23 @@ main {
     max-width: 280px;
   }
 
-  .tour-layout,
   .podcast-layout,
   .bio-layout {
     grid-template-columns: 1fr;
   }
 
-  .tour-photo,
+  .hero {
+    transform: none;
+  }
+
+  .hero-photo {
+    transform: none;
+    margin-left: 0;
+  }
+
   .bio-photo {
+    position: static;
+    height: auto;
     max-width: clamp(260px, 60vw, 420px);
     max-height: clamp(220px, 44vw, 320px);
     margin: 0 auto;
@@ -627,14 +635,13 @@ main {
     margin: 0 auto;
   }
 
-  .tour-photo,
   .podcast-photo-frame,
   .bio-photo-col {
     order: -1;
   }
 
   .bio-photo-col {
-    align-items: center;
+    min-height: 0;
   }
 
   .tour-row {
@@ -654,7 +661,6 @@ main {
 }
 
 @media (max-width: 1200px) {
-  .tour-layout,
   .podcast-layout,
   .bio-layout {
     gap: clamp(24px, 3vw, 48px);
