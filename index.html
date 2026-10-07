@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/style.css?v=59" />
+<link rel="stylesheet" href="assets/css/style.css?v=66" />
 </head>
 <body>
 
@@ -74,10 +74,10 @@
                 <g transform="matrix(1,0,0,1,-0.605007,51)">
                     <text x="0px" y="0px" style="font-family:'Geist-ExtraBold', 'Geist';font-weight:800;font-size:37.2px;fill:white;">S</text>
                 </g>
-                <g transform="matrix(1,0,0,1,29.435595,51.5952)">
+                <g transform="matrix(1,0,0,1,28.096122,51.5952)">
                     <text x="0px" y="0px" style="font-family:'Geist-ExtraBold', 'Geist';font-weight:800;font-size:37.2px;fill:white;">I</text>
                 </g>
-                <g transform="matrix(1,0,0,1,40.773231,51.5952)">
+                <g transform="matrix(1,0,0,1,40.773231,51.669806)">
                     <text x="0px" y="0px" style="font-family:'Geist-ExtraBold', 'Geist';font-weight:800;font-size:37.2px;fill:white;">M</text>
                 </g>
                 <g transform="matrix(1,0,0,1,73.117074,51.887649)">
@@ -124,34 +124,34 @@
     <div class="tour-layout">
       <div class="tour-list tour-list--framed">
         <div class="tour-row">
-          <span class="tour-date">08.10.26.</span>
-          <span class="tour-details"><span class="tour-city">Hamburg</span></span>
-          <span class="tour-status">Tickets</span>
-        </div>
-        <div class="tour-row">
           <span class="tour-date">13.10.26.</span>
           <span class="tour-details"><span class="tour-city">Frankfurt am Main</span></span>
-          <span class="tour-status">Tickets</span>
+          <a class="tour-status" href="https://standup-republic.de/shows/dicke-luft-live-die-stand-up-and-podcast-tour_472" target="_blank" rel="noopener">Tickets</a>
         </div>
         <div class="tour-row">
           <span class="tour-date">20.10.26.</span>
           <span class="tour-details"><span class="tour-city">Düsseldorf</span></span>
-          <span class="tour-status">Tickets</span>
+          <a class="tour-status" href="https://standup-republic.de/shows/dicke-luft-live-die-stand-up-and-podcast-tour_472" target="_blank" rel="noopener">Tickets</a>
         </div>
         <div class="tour-row">
           <span class="tour-date">25.10.26.</span>
-          <span class="tour-details"><span class="tour-city">München</span></span>
-          <span class="tour-status">Tickets</span>
+          <span class="tour-details"><span class="tour-city">München<span class="tour-soldout">Ausverkauft</span></span></span>
+          <a class="tour-status" href="https://standup-republic.de/shows/dicke-luft-live-die-stand-up-and-podcast-tour_472" target="_blank" rel="noopener">Tickets</a>
         </div>
         <div class="tour-row">
           <span class="tour-date">29.10.26.</span>
           <span class="tour-details"><span class="tour-city">Leipzig</span></span>
-          <span class="tour-status">Tickets</span>
+          <a class="tour-status" href="https://standup-republic.de/shows/dicke-luft-live-die-stand-up-and-podcast-tour_472" target="_blank" rel="noopener">Tickets</a>
         </div>
         <div class="tour-row">
           <span class="tour-date">03.11.26.</span>
           <span class="tour-details"><span class="tour-city">Berlin</span></span>
-          <span class="tour-status">Tickets</span>
+          <a class="tour-status" href="https://standup-republic.de/shows/dicke-luft-live-die-stand-up-and-podcast-tour_472" target="_blank" rel="noopener">Tickets</a>
+        </div>
+        <div class="tour-row">
+          <span class="tour-date">06.12.26.</span>
+          <span class="tour-details"><span class="tour-city">Berlin</span></span>
+          <a class="tour-status" href="https://www.downstairscomedy.shop/catalog/tickets/101850-tickets-stand-up-comedy-trifft-auf-live-musik-mit-simon-mann-downstairs-comedy-club-berlin-am-06-12-2026" target="_blank" rel="noopener">Tickets</a>
         </div>
 
       </div>
@@ -166,31 +166,16 @@
         <img class="podcast-photo" src="assets/img/podcast-photo-framed.png" alt="Simon Mann, Philip Wefel und Yannick de la Pêche — die Stimmen von Dicke Luft, im Bilderrahmen" />
       </div>
 
-      <div class="panel podcast-panel">
-        <h2>aktuelle Folge:</h2>
+      <div class="podcast-panel">
 
-        <!--
-          Sobald die echte Spotify-Episode bekannt ist, hier den offiziellen
-          Embed einsetzen, z.B.:
-          <iframe src="https://open.spotify.com/embed/episode/EPISODE_ID"
-                  width="100%" height="232" frameborder="0"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"></iframe>
-        -->
-        <div class="spotify-embed" style="background:#111; padding:20px; width:100%; display:flex; flex-direction:column; gap:14px;">
-          <div style="display:flex; gap:14px; align-items:center;">
-            <div style="width:60px; height:60px; border-radius:8px; background:linear-gradient(135deg,#2bbf95,#1a8f6d); flex-shrink:0;"></div>
-            <div>
-              <p style="margin:0; font-weight:700; color:#fff;">#89 – Unterhosen im Garten</p>
-              <p style="margin:0; color:rgba(255,255,255,0.6); font-size:0.85rem;">3. Sep · Dicke Luft · 1:02:11</p>
-            </div>
+        <div class="tv">
+          <div class="tv-screen">
+            <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/show/2RLZpySITKz1FGw13agaj9/video?utm_source=generator&amp;theme=0&amp;si=6b09e0529fc14cc0" title="Dicke Luft auf Spotify" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
-          <a class="btn" href="https://open.spotify.com/show/2RLZpySITKz1FGw13agaj9" target="_blank" rel="noopener">Auf Spotify hören</a>
+          <div class="tv-neck"></div>
+          <div class="tv-foot"></div>
         </div>
 
-        <div class="podcast-links">
-          <a class="btn btn--outline" href="https://open.spotify.com/show/2RLZpySITKz1FGw13agaj9" target="_blank" rel="noopener">Alle Folgen auf Spotify</a>
-        </div>
       </div>
     </div>
   </section>
