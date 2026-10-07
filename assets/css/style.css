@@ -25,6 +25,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Desktop: text and spacing follow the viewport height so every section fits on one screen
+   (16px at ~800px tall viewports). */
+@media (min-width: 901px) {
+  html {
+    --avail: calc(100svh - 84px);
+    font-size: clamp(11px, 1.85vh, 18px);
+  }
+}
+
 body {
   margin: 0;
   background-color: var(--color-body);
@@ -234,27 +243,56 @@ main {
 }
 
 .hero-logo {
+  --logo-w: clamp(170px, min(28.5vw, 40svh), 460px);
   width: 100%;
   height: auto;
-  max-width: clamp(240px, 30vw, 420px);
+  max-width: var(--logo-w);
+  align-self: flex-end;
+  /* right edge reaches ~10% under Simon so the last Ns slip behind him */
+  margin-right: calc(var(--logo-w) * -0.14 + 38px);
+  margin-block: 0 clamp(16px, 4vh, 40px);
+  transform: translateY(clamp(14px, 4.5svh, 48px));
 }
 
 .hero-copy {
   position: relative;
+}
+
+.signup-panel {
+  position: relative;
   z-index: 2;
 }
 
-.hero-photo {
+.hero-figure {
   position: relative;
   z-index: 1;
   margin-left: var(--hero-overlap);
-  transform: translateY(11%);
+  transform: translateY(5%);
   justify-self: center;
   align-self: center;
+}
+
+/* soft shadow on the floor under Simon's feet and mic stand */
+.hero-figure::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 10%;
+  width: 90%;
+  bottom: 1%;
+  height: 10%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 72%);
+  filter: blur(4px);
+}
+
+.hero-photo {
+  display: block;
   width: auto;
   height: auto;
-  max-width: clamp(300px, 44vw, 640px);
-  max-height: clamp(300px, 77vh, 800px);
+  max-width: clamp(300px, 54vw, 800px);
+  max-height: max(260px, calc((100svh - 84px) * 0.88));
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
 }
 
 .signup-panel {
@@ -385,11 +423,12 @@ main {
 }
 
 .tour-row {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: clamp(12px, 2vw, 24px);
   align-items: center;
-  padding: clamp(16px, 2.6vw, 30px) clamp(4px, 1vw, 10px);
+  padding: clamp(18px, 3svh, 36px) clamp(4px, 1vw, 10px);
 }
 
 .tour-date {
@@ -407,23 +446,27 @@ main {
   gap: 2px;
 }
 
-.tour-list--framed .tour-row:not(:last-of-type) .tour-details::after {
+.tour-list--framed .tour-row:not(:last-of-type)::after {
   content: "";
   position: absolute;
   left: 50%;
   bottom: 0;
-  transform: translate(-50%, 220%);
-  width: clamp(200px, 60vw, 1200px);
-  height: clamp(12px, 1.6vw, 16px);
+  transform: translate(-50%, 50%);
+  width: clamp(180px, 20vw, 260px);
+  height: clamp(11px, 1.5vw, 16px);
   background-color: var(--color-header);
-  -webkit-mask-image: url("../img/divider-line.svg");
-  mask-image: url("../img/divider-line.svg");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
+  -webkit-mask: url("../img/divider-line.svg") center / contain no-repeat;
+  mask: url("../img/divider-line.svg") center / contain no-repeat;
+}
+
+.tour-show {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(0.62rem, 0.45rem + 0.45vw, 0.8rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
 }
 
 .tour-city {
@@ -495,7 +538,7 @@ main {
 .podcast-photo-frame {
   position: relative;
   width: 100%;
-  max-width: clamp(300px, 40vw, 540px);
+  max-width: clamp(240px, min(40vw, calc((100svh - 84px) * 0.68)), 560px);
   aspect-ratio: 1243 / 1600;
   margin: 0 auto;
 }
@@ -511,56 +554,80 @@ main {
 .podcast-panel {
   min-width: 0;
   align-self: center;
-  width: 100%;
-  max-width: 460px;
-  justify-self: center;
+  /* a bit wider than its column: it grows into the gap next to the framed photo */
+  width: calc(100% + clamp(0px, 4vw, 56px));
+  max-width: 760px;
+  justify-self: end;
 }
 
-/* Flat-screen TV around the Spotify embed */
+/* Retro CRT television around the Spotify embed */
 
 .tv {
+  --tv-pad: clamp(10px, 1.6vw, 20px);
   min-width: 0;
-  --tv-bezel: clamp(8px, 1vw, 14px);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.tv-screen {
-  width: 100%;
-  padding: var(--tv-bezel) var(--tv-bezel) calc(var(--tv-bezel) * 2.2);
-  background: linear-gradient(160deg, #2a2a2c 0%, #101012 45%, #1b1b1d 100%);
-  border-radius: 12px;
-  border: 1px solid #3a3a3d;
-  box-shadow:
-    inset 0 0 0 2px #0a0a0b,
-    0 18px 36px rgba(0, 0, 0, 0.45),
-    0 2px 0 rgba(255, 255, 255, 0.06);
+.tv-antenna {
   position: relative;
+  width: 30%;
+  height: clamp(26px, 4.4vw, 56px);
+  margin-bottom: -2px;
 }
 
-/* small power LED in the bottom bezel */
-.tv-screen::after {
-  content: "";
+.tv-antenna span {
   position: absolute;
-  right: calc(var(--tv-bezel) * 1.4);
-  bottom: calc(var(--tv-bezel) * 0.8);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #27c199;
-  box-shadow: 0 0 6px rgba(39, 193, 153, 0.8);
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(#c9c2b8, #6d655c);
+  border-radius: 2px;
+  transform-origin: bottom center;
 }
 
-/* The display keeps Spotify's 496:279 ratio and clips the embed, so it always
-   scales with (and never overflows) the TV bezel. */
+.tv-antenna span:first-child { transform: translateX(-50%) rotate(-28deg); }
+.tv-antenna span:last-child { transform: translateX(-50%) rotate(24deg); }
+
+.tv-body {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr clamp(46px, 11%, 84px);
+  gap: var(--tv-pad);
+  width: 100%;
+  padding: var(--tv-pad);
+  border-radius: 22px / 26px;
+  background:
+    repeating-linear-gradient(92deg, rgba(0, 0, 0, 0.07) 0 2px, rgba(255, 255, 255, 0.03) 2px 5px),
+    linear-gradient(160deg, #8a5a36 0%, #6b4226 55%, #4f2f1b 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.4),
+    0 20px 34px rgba(0, 0, 0, 0.45);
+}
+
+.tv-screen {
+  position: relative;
+  padding: clamp(6px, 1vw, 12px);
+  border-radius: 14% / 18%;
+  background: #0b0b0c;
+  box-shadow:
+    inset 0 0 0 2px #1d1b19,
+    inset 0 4px 14px rgba(0, 0, 0, 0.9),
+    0 0 0 3px rgba(0, 0, 0, 0.35),
+    0 1px 0 3px rgba(255, 255, 255, 0.12);
+}
+
+/* The display keeps Spotify's 496:279 ratio and clips the embed (see main.js for scaling) */
 .tv-display {
   position: relative;
   width: 100%;
   aspect-ratio: 496 / 279;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 9% / 14%;
   background: #000;
 }
 
@@ -584,18 +651,74 @@ main {
   transform-origin: 0 0;
 }
 
-.tv-neck {
-  width: clamp(24px, 4vw, 44px);
-  height: clamp(10px, 1.6vw, 18px);
-  background: linear-gradient(90deg, #121214, #2c2c2f 50%, #121214);
+/* curved glass: vignette + soft highlight; clicks pass through to the player */
+.tv-glass {
+  position: absolute;
+  inset: clamp(6px, 1vw, 12px);
+  border-radius: 9% / 14%;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 30% 12%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 40%),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.4) 100%);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.55);
 }
 
-.tv-foot {
-  width: clamp(110px, 18vw, 190px);
-  height: clamp(5px, 0.7vw, 8px);
-  background: linear-gradient(180deg, #2c2c2f, #0e0e10);
-  border-radius: 40px 40px 4px 4px;
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.4);
+.tv-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(8px, 1.4vw, 16px);
+  padding: clamp(10px, 1.6vw, 18px) 0;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #2b2521, #1a1613);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.tv-knob {
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    linear-gradient(0deg, transparent 46%, rgba(0, 0, 0, 0.6) 46% 54%, transparent 54%) 50% 8% / 8% 38% no-repeat,
+    radial-gradient(circle at 35% 30%, #e8e1d4 0%, #a79e8e 45%, #5d564b 100%);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6), inset 0 -2px 3px rgba(0, 0, 0, 0.35);
+  transform: rotate(35deg);
+}
+
+.tv-knob--small {
+  width: 46%;
+  transform: rotate(-50deg);
+}
+
+.tv-grille {
+  flex: 1;
+  width: 62%;
+  min-height: 28px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(0deg, #0d0b0a 0 3px, #38302b 3px 5px);
+}
+
+.tv-led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #27c199;
+  box-shadow: 0 0 6px rgba(39, 193, 153, 0.9);
+}
+
+.tv-feet {
+  display: flex;
+  justify-content: space-between;
+  width: 82%;
+}
+
+.tv-feet span {
+  width: clamp(18px, 3vw, 34px);
+  height: clamp(8px, 1.2vw, 14px);
+  background: linear-gradient(#2d2118, #120c08);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* ---------- Bio + Kontakt ---------- */
@@ -679,14 +802,16 @@ main {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
-  /* mobile hero: logo left, Simon right; the mic cable ends between the two Ns */
+  /* mobile hero: logo left, Simon right. The mic cable ends behind the middle of the last N,
+     level with the gap between the two logo lines. */
   .hero {
-    --lw: min(47vw, 210px);
-    --ph: min(300px, 70vw);
-    grid-template-columns: auto auto;
-    justify-content: center;
+    --lw: min(40vw, 170px);
+    --ph: min(340px, 84vw);
+    --overlap: calc(var(--ph) * 0.195 - var(--lw) * 0.30);
+    grid-template-columns: 1fr var(--lw) calc(var(--ph) * 0.5) 1fr;
     column-gap: 0;
     row-gap: 24px;
+    transform: translateX(calc(var(--overlap) * 0.5));
   }
 
   .hero-copy {
@@ -694,20 +819,27 @@ main {
   }
 
   .hero-logo {
-    grid-column: 1;
+    position: relative;
+    z-index: 2;
+    grid-column: 2;
     grid-row: 1;
     align-self: start;
     width: var(--lw);
     max-width: none;
-    /* put the gap between the two logo lines at the height where the cable ends (~75% of the photo height) */
-    margin-top: calc(var(--ph) * 0.755 - var(--lw) * 0.386);
+    margin: calc(var(--ph) * 0.755 - var(--lw) * 0.4156) 0 0;
+    transform: translateX(-6px);
   }
 
-  .hero-photo {
-    grid-column: 2;
+  .hero-figure {
+    grid-column: 3;
     grid-row: 1;
     align-self: start;
     justify-self: start;
+    margin-left: calc(var(--overlap) * -1);
+    transform: none;
+  }
+
+  .hero-photo {
     width: auto;
     height: var(--ph);
     max-width: none;
@@ -718,20 +850,12 @@ main {
     grid-column: 1 / -1;
     grid-row: 2;
     justify-self: center;
+    transform: translateX(calc(var(--overlap) * -0.5));
   }
 
   .podcast-layout,
   .bio-layout {
     grid-template-columns: 1fr;
-  }
-
-  .hero {
-    transform: none;
-  }
-
-  .hero-photo {
-    transform: none;
-    margin-left: -13px;
   }
 
   .bio-photo {
@@ -740,6 +864,11 @@ main {
     max-width: clamp(260px, 60vw, 420px);
     max-height: clamp(220px, 44vw, 320px);
     margin: 0 auto;
+  }
+
+  .podcast-panel {
+    width: 100%;
+    justify-self: center;
   }
 
   .podcast-photo-frame {
