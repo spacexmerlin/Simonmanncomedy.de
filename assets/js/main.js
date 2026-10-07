@@ -30,3 +30,24 @@ if (navLinks.length && sections.length) {
 
   sections.forEach((section) => observer.observe(section));
 }
+
+// Spotify TV: render the embed at its native 496x279 and scale it down to fit the
+// screen, so the player UI keeps its proportions instead of reflowing bigger on phones.
+const tvDisplay = document.querySelector(".tv-display");
+
+if (tvDisplay) {
+  const NATIVE_WIDTH = 496;
+  const fitTv = () => {
+    const scale = Math.min(1, tvDisplay.clientWidth / NATIVE_WIDTH);
+    tvDisplay.style.setProperty("--tv-scale", scale);
+  };
+
+  tvDisplay.classList.add("is-scaled");
+  fitTv();
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(fitTv).observe(tvDisplay);
+  } else {
+    window.addEventListener("resize", fitTv);
+  }
+}
