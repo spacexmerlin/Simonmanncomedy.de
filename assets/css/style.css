@@ -805,13 +805,13 @@ main {
   /* mobile hero: logo left, Simon right. The mic cable ends behind the middle of the last N,
      level with the gap between the two logo lines. */
   .hero {
-    --lw: min(40vw, 170px);
-    --ph: min(340px, 84vw);
+    --lw: min(44vw, 190px);
+    --ph: min(400px, 100vw);
     --overlap: calc(var(--ph) * 0.195 - var(--lw) * 0.30);
-    grid-template-columns: 1fr var(--lw) calc(var(--ph) * 0.5) 1fr;
+    grid-template-columns: 1fr var(--lw) calc(var(--ph) * 0.5 - var(--overlap)) 1fr;
     column-gap: 0;
     row-gap: 24px;
-    transform: translateX(calc(var(--overlap) * 0.5));
+    transform: translateX(8px);
   }
 
   .hero-copy {
@@ -826,7 +826,7 @@ main {
     align-self: start;
     width: var(--lw);
     max-width: none;
-    margin: calc(var(--ph) * 0.755 - var(--lw) * 0.4156) 0 0;
+    margin: calc(var(--ph) * 0.755 - var(--lw) * 0.4491) 0 0;
     transform: translateX(-6px);
   }
 
@@ -835,7 +835,7 @@ main {
     grid-row: 1;
     align-self: start;
     justify-self: start;
-    margin-left: calc(var(--overlap) * -1);
+    margin-left: calc(var(--overlap) * -1 + 6px);
     transform: none;
   }
 
@@ -850,7 +850,7 @@ main {
     grid-column: 1 / -1;
     grid-row: 2;
     justify-self: center;
-    transform: translateX(calc(var(--overlap) * -0.5));
+    transform: translateX(-8px);
   }
 
   .podcast-layout,
@@ -872,7 +872,7 @@ main {
   }
 
   .podcast-photo-frame {
-    max-width: clamp(260px, 84vw, 400px);
+    max-width: clamp(280px, 92vw, 440px);
     margin: 0 auto;
   }
 
