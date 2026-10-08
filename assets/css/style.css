@@ -286,6 +286,20 @@ main {
   filter: blur(4px);
 }
 
+/* shadow thrown onto the wall behind Simon: his own silhouette, flattened, blurred and offset */
+.hero-figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../img/hero-photo.png") center / 100% 100% no-repeat;
+  filter: brightness(0) blur(clamp(6px, 0.9vw, 14px));
+  opacity: 0.32;
+  transform: translate(9%, -2%) scale(1.03);
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
 .hero-photo {
   display: block;
   width: auto;
@@ -313,6 +327,7 @@ main {
 }
 
 .signup-panel h2 {
+  color: var(--color-accent);
   font-size: clamp(1.15rem, 0.8rem + 1.4vh, 1.8rem);
   margin-bottom: clamp(6px, 1vh, 12px);
 }
