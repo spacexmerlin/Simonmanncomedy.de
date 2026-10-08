@@ -433,10 +433,6 @@ main {
   max-width: 760px;
 }
 
-.tour-list--framed {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
 .tour-row {
   position: relative;
   display: grid;
