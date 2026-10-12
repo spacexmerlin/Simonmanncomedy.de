@@ -295,8 +295,9 @@ main {
   background: url("../img/hero-photo.png") center / 100% 100% no-repeat;
   filter: brightness(0) blur(clamp(6px, 0.9vw, 14px));
   opacity: 0.32;
-  transform: translate(9%, -2%) scale(1.03);
-  transform-origin: 50% 100%;
+  transform: translate(9%, 4%);
+  /* the shadow starts at the top of his head and never rises above it */
+  clip-path: inset(0 -30% -10% -30%);
   pointer-events: none;
 }
 
@@ -837,7 +838,7 @@ main {
     align-self: start;
     width: var(--lw);
     max-width: none;
-    margin: calc(var(--ph) * 0.755 - var(--lw) * 0.4491) 0 0;
+    margin: calc(var(--ph) * 0.755 - var(--lw) * 0.4638) 0 0;
     transform: translateX(-6px);
   }
 
