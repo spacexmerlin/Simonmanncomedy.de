@@ -870,6 +870,11 @@ main {
     max-height: none;
   }
 
+  /* keep the wall shadow inside the figure box so it can never push the page wider than the screen */
+  .hero-figure::after {
+    transform: translate(2%, 4%);
+  }
+
   .signup-panel {
     grid-column: 1 / -1;
     grid-row: 2;
