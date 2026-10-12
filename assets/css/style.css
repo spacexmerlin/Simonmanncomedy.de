@@ -43,6 +43,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip; /* the wall shadow behind Simon may poke out; never let it widen the page */
   background-color: var(--color-body);
   background-image: url("../img/background.png");
   background-repeat: repeat;
@@ -201,6 +202,7 @@ p {
 /* ---------- Layout helpers ---------- */
 
 main {
+  overflow-x: clip; /* shadows/offsets must not widen the page (mobile shows extra blank space on the right otherwise) */
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 64px);
@@ -261,7 +263,7 @@ main {
   margin-left: calc(clamp(320px, 44vw, 560px) - var(--logo-w));
   margin-block: 0 clamp(16px, 4vh, 40px);
   transform: translateY(clamp(14px, 4.5svh, 48px));
-  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.45)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.34)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
 }
 
 .hero-copy {
@@ -833,7 +835,7 @@ main {
     grid-template-columns: 1fr var(--lw) calc(var(--ph) * 0.5 - var(--overlap)) 1fr;
     column-gap: 0;
     row-gap: 24px;
-    transform: translateX(8px);
+    transform: translateX(5px);
   }
 
   .hero-copy {
@@ -872,7 +874,7 @@ main {
     grid-column: 1 / -1;
     grid-row: 2;
     justify-self: center;
-    transform: translateX(-8px);
+    transform: translateX(-5px);
   }
 
   .podcast-layout,
